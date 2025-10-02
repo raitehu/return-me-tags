@@ -1,0 +1,481 @@
+@font-face {
+  font-family: 'Meiryo Web';
+  src: url('https://fonts.cdnfonts.com/s/14944/Meiryo.woff2') format('woff2'),
+    url('https://fonts.cdnfonts.com/s/14944/Meiryo.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Meiryo Web';
+  src: url('https://fonts.cdnfonts.com/s/14944/Meiryo-Bold.woff2') format('woff2'),
+    url('https://fonts.cdnfonts.com/s/14944/Meiryo-Bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #dbeafe, #f3f4f6 60%);
+  font-family: var(--font-noto-serif-jp), 'Noto Serif JP', serif;
+}
+
+main.page {
+  display: grid;
+  gap: 2.5rem;
+  padding: 3rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 960px) {
+  main.page {
+    grid-template-columns: minmax(340px, 1fr) minmax(420px, 1.2fr);
+    align-items: start;
+  }
+}
+
+section.form {
+  background: #ffffffee;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: clamp(2.1rem, 3vw, 2.6rem);
+  margin: 0;
+  letter-spacing: 0.12em;
+  display: flex;
+  justify-content: center;
+}
+
+.titleImage {
+  max-width: min(280px, 70vw);
+  height: auto;
+  display: block;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  color: #1f2937;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.description {
+  margin: 0.75rem 0 0;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.notes {
+  margin: -0.5rem 0 0;
+  padding-left: 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.notes li {
+  margin: 0.2rem 0;
+  list-style: none;
+}
+
+.inputGrid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+.fieldNote {
+  margin: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.field input[type='text'],
+.field input[type='url'],
+.field select {
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+}
+
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #2563eb 50%), linear-gradient(135deg, #2563eb 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1.1em + 2px), calc(100% - 15px) calc(1.1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+
+.field input[type='text']:focus,
+.field input[type='url']:focus,
+.field select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.field input[type='color'] {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.downloadButton {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.downloadButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.downloadButton:disabled {
+  background: #93c5fd;
+  cursor: progress;
+}
+
+.shareButton {
+  background: #111827;
+  color: #f8fafc;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.9rem;
+  padding: 0.85rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.shareButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+}
+
+.shareButton:disabled {
+  background: #4b5563;
+  cursor: progress;
+}
+
+.netprintLinks {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.netprintButton {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  background: #f8fafc;
+  color: #1e3a8a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.netprintButton:hover {
+  background: #e0f2fe;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.15);
+}
+
+.privacyNote {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+.error {
+  color: #dc2626;
+  margin: 0;
+}
+
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.previewHeading {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.previewWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1.25rem;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.3);
+}
+
+.previewActions {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.previewActions {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.previewActions .downloadButton {
+  width: 100%;
+  max-width: 320px;
+}
+
+.previewActions .privacyNote {
+  text-align: center;
+  max-width: 480px;
+}
+
+.previewActions .netprintLinks {
+  width: 100%;
+  max-width: 480px;
+}
+
+.placeholderSpace {
+  height: 4rem;
+}
+
+.emptyPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 240px;
+  color: #64748b;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.sheet {
+  width: 127mm;
+  height: 89mm;
+  background: #ffffff;
+  padding: 3.5mm;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+  display: flex;
+}
+
+.tagGrid {
+  display: grid;
+  gap: 0;
+  align-content: start;
+  justify-content: start;
+  width: 100%;
+  height: 100%;
+}
+
+.tag {
+  width: 30mm;
+  height: 15mm;
+  position: relative;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 0 0.2mm rgba(148, 163, 184, 0.5);
+}
+
+.tagContent {
+  width: 100%;
+  height: 100%;
+  padding: 1.6mm 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tagBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2mm;
+  height: 100%;
+}
+
+.tagText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+  height: 10mm;
+  max-width: 14mm;
+  width: 14mm;
+  gap: 1mm;
+}
+
+.tagName {
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.tagLabel {
+  font-size: 2.0mm;
+  margin: 0;
+  white-space: nowrap;
+  margin-top: auto;
+}
+
+.tagVia {
+  font-size: 1.4mm;
+  margin: 0;
+  color: rgba(75, 85, 99, 0.8);
+}
+
+.tagQr {
+  width: 10mm;
+  height: 10mm;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.tagQr canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+@media (max-width: 720px) {
+  .previewWrapper {
+    overflow-x: auto;
+  }
+
+  .sheet {
+    transform: scale(0.6);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 520px) {
+  main.page {
+    gap: 1.75rem;
+    padding: 2.25rem 1.25rem 3rem;
+  }
+
+  section.form {
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .notes {
+    font-size: 0.8rem;
+  }
+
+  .subtitle {
+    letter-spacing: 0.15em;
+    font-size: 0.95rem;
+  }
+
+  .description {
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .inputGrid {
+    gap: 1rem;
+  }
+
+  .previewWrapper {
+    padding: 1.1rem 0.7rem;
+  }
+
+  .sheet {
+    transform: scale(0.48);
+    transform-origin: top center;
+  }
+
+  .placeholderSpace {
+    height: 2.5rem;
+  }
+
+  .previewActions {
+    margin-top: 1.25rem;
+    justify-items: stretch;
+  }
+
+  .previewActions .downloadButton,
+  .shareButton {
+    max-width: 100%;
+  }
+
+  .previewActions .privacyNote,
+  .previewActions .netprintLinks {
+    max-width: 100%;
+  }
+}
+
+.pageFooter {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 1.5rem 0 3rem;
+  line-height: 1.4;
+}
