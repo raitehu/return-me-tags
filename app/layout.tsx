@@ -25,7 +25,7 @@ const sawarabiMincho = Sawarabi_Mincho({
 
 const siteUrl = 'https://returnmetags.raitehu.com';
 const siteTitle = 'ReturnMeTags! by Raitehu';
-const siteDescription = 'お名前と連絡先を入力するだけで、L版サイズの迷子タグシートをブラウザ上で手軽に作成できます。ネットプリントでシールに印刷すれば、持ち物に貼れる安心タグがすぐ完成します。';
+const siteDescription = '推し活やイベント参戦で活躍する「#ReturnMeTags」迷子タグジェネレーター。お名前と連絡先を入力するだけで、L版サイズの紛失防止タグシートをブラウザ上で手軽に作成でき、ネットプリントでシールに印刷すれば持ち物に貼れる安心タグがすぐ完成します。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteTitle}`,
   },
   description: siteDescription,
+  keywords: ['#ReturnMeTags', '推し活', '迷子タグ', '紛失防止タグ', '推し活グッズ', 'QRタグ'],
   alternates: {
     canonical: '/',
   },
