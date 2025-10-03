@@ -159,7 +159,9 @@ export default function HomePage() {
       event_label: safeName,
     });
 
-    if (!sheetRef.current) {
+    const sheetElement = sheetRef.current;
+
+    if (!sheetElement) {
       return;
     }
 
@@ -167,8 +169,9 @@ export default function HomePage() {
     setErrorMessage(null);
 
     try {
+      sheetElement.setAttribute('data-exporting', 'true');
       const htmlToImage = await import('html-to-image');
-      const dataUrl = await htmlToImage.toPng(sheetRef.current, {
+      const dataUrl = await htmlToImage.toPng(sheetElement, {
         cacheBust: true,
         pixelRatio: 3,
         backgroundColor: '#ffffff',
@@ -182,12 +185,19 @@ export default function HomePage() {
       console.error('Failed to generate PNG', error);
       setErrorMessage('画像の生成に失敗しました。ブラウザを最新化して再試行してください。');
     } finally {
+      sheetElement.removeAttribute('data-exporting');
       setIsGenerating(false);
     }
   }, [hasContent, safeName]);
 
   return (
     <>
+      {isGenerating ? (
+        <div className="loadingOverlay" role="status" aria-live="polite">
+          <div className="spinner" />
+          <p className="loadingText">画像を生成中です…</p>
+        </div>
+      ) : null}
       <main className="page">
       <section className="form">
         <h1 className="title" style={{ whiteSpace: 'nowrap' }}>

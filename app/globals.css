@@ -314,6 +314,61 @@ section.form {
   position: relative;
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
   display: flex;
+  --sheet-scale: clamp(0.45, calc((100vw - 80px) / 640px), 1);
+  transform: scale(var(--sheet-scale));
+  transform-origin: top center;
+  margin-inline: calc((var(--sheet-scale) - 1) * 63.5mm);
+  margin-bottom: calc((var(--sheet-scale) - 1) * 44.5mm);
+}
+
+.sheet[data-exporting='true'] {
+  --sheet-scale: 1;
+  margin-inline: 0;
+  margin-bottom: 0;
+}
+
+.loadingOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 41, 59, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  color: #f8fafc;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: 4px solid rgba(226, 232, 240, 0.3);
+  border-top-color: #f8fafc;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 1rem;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .previewWrapper {
+    overflow-x: auto;
+  }
 }
 
 .tagGrid {
@@ -379,12 +434,31 @@ section.form {
   margin: 0;
   white-space: nowrap;
   margin-top: auto;
+  position: relative;
+  padding-right: 3mm;
+  padding-bottom: 0.4mm;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: calc(100% - 2.6mm) 0.25mm;
+  background-position: left calc(100% - 0.1mm);
 }
 
 .tagVia {
   font-size: 1.4mm;
   margin: 0;
   color: rgba(75, 85, 99, 0.8);
+}
+
+.tagLabel::after {
+  content: '';
+  position: absolute;
+  right: 1mm;
+  bottom: -0.6mm;
+  width: 0;
+  height: 0;
+  border-left: 2mm solid currentColor;
+  border-top: 0.8mm solid transparent;
+  border-bottom: 0.8mm solid transparent;
 }
 
 .tagQr {
@@ -402,17 +476,6 @@ section.form {
   height: 100% !important;
 }
 
-
-@media (max-width: 720px) {
-  .previewWrapper {
-    overflow-x: auto;
-  }
-
-  .sheet {
-    transform: scale(0.6);
-    transform-origin: top center;
-  }
-}
 
 @media (max-width: 520px) {
   main.page {
@@ -445,11 +508,7 @@ section.form {
 
   .previewWrapper {
     padding: 1.1rem 0.7rem;
-  }
-
-  .sheet {
-    transform: scale(0.48);
-    transform-origin: top center;
+    overflow-x: auto;
   }
 
   .placeholderSpace {
