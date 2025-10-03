@@ -311,7 +311,7 @@ export default function HomePage() {
           </button>
           <a
             className="shareButton"
-            href="https://x.com/intent/post?url=https%3A%2F%2Freturnmetags.raitehu.com&text=ReturnMeTags!%E3%81%A7%E8%BF%B7%E5%AD%90%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%88%EF%BC%81&hashtags=ReturnMeTags"
+            href="https://twitter.com/share?url=https%3A%2F%2Freturnmetags.raitehu.com&text=ReturnMeTags!%E3%81%A7%E8%BF%B7%E5%AD%90%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%88%EF%BC%81&hashtags=ReturnMeTags"
             target="_blank"
             rel="noreferrer"
           >
