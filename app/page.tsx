@@ -1,6 +1,7 @@
 'use client';
 
 import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
+import { trackEvent } from '../src/lib/analytics';
 import { QRCodeCanvas } from 'qrcode.react';
 
 interface FontOption {
@@ -152,6 +153,11 @@ export default function HomePage() {
       setErrorMessage('先に名前と連絡先URLを入力してください。');
       return;
     }
+
+    trackEvent('download_png_button_click', {
+      event_category: 'engagement',
+      event_label: safeName,
+    });
 
     if (!sheetRef.current) {
       return;
