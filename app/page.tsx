@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
 import { trackEvent } from '../src/lib/analytics';
-import { QRCodeCanvas } from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 interface FontOption {
   label: string;
@@ -295,7 +295,7 @@ export default function HomePage() {
                           <p className="tagVia">via #ReturnMeTags!</p>
                         </div>
                         <div className="tagQr" aria-hidden="true">
-                          <QRCodeCanvas
+                          <QRCodeSVG
                             value={qrValue}
                             size={90}
                             bgColor="#ffffff"

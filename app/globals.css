@@ -471,7 +471,8 @@ section.form {
   align-self: center;
 }
 
-.tagQr canvas {
+.tagQr canvas,
+.tagQr svg {
   width: 100% !important;
   height: 100% !important;
 }
